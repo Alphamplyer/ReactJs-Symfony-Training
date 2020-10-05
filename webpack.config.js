@@ -2,13 +2,12 @@ const Encore = require('@symfony/webpack-encore');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 Encore
-    .configureRuntimeEnvironment(process.env.NODE_ENV || 'dev')
-
     // the project directory where all compiled assets will be stored
     .setOutputPath('public/build/')
 
     // the public path used by the web server to access the previous directory
     .setPublicPath('/build')
+
 
     .createSharedEntry('layout', './assets/js/layout.js')
     .addEntry('rep_log', './assets/js/rep_log.js')
