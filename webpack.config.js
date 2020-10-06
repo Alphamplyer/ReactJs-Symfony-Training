@@ -5,8 +5,6 @@ const Encore = require ('@symfony/webpack-encore');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 Encore
-    .configureRuntimeEnvironment(process.env.NODE_ENV || 'dev')
-
     // the project directory where all compiled assets will be stored
     .setOutputPath('public/build/')
 
