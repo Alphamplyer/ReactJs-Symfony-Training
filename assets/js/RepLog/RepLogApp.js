@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import RepLog from "./RepLog";
+import RepLogs from "./RepLogs";
 import PropTypes from 'prop-types';
 
 export default class RepLogApp extends Component {
@@ -24,14 +24,10 @@ export default class RepLogApp extends Component {
     }
 
     render() {
-        const { highlightedRowId, repLogs } = this.state;
-        const { withHeart } = this.props;
-
-        return <RepLog
-            withHeart={ withHeart }
-            highlightedRowId={ highlightedRowId }
+        return <RepLogs
+            {...this.props}
+            {...this.state}
             onRowClick={ this.handleRowClick }
-            repLogs={ repLogs }
         />
     }
 }

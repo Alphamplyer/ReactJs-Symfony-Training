@@ -3,7 +3,14 @@ import RepLogList from "./RepLogList";
 import RepLogApp from "./RepLogApp";
 import PropTypes from "prop-types";
 
-export default function RepLog (props) {
+/**
+ * Calculate the total of amount contain in totalWeightLifted properties of logs
+ * @param repLogs the logs
+ * @returns {number} the sum of amount contain in totalWeightLifted properties of logs
+ */
+const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
+
+export default function RepLogs (props) {
     const { withHeart, highlightedRowId, onRowClick, repLogs } = props;
 
     let heart = withHeart ? <span>❤</span> : '';
@@ -30,7 +37,7 @@ export default function RepLog (props) {
                 <tr>
                     <td>&nbsp;</td>
                     <th>Total</th>
-                    <th>TODO</th>
+                    <th>{ calculateTotalWeightFancier(repLogs) }</th>
                     <td>&nbsp;</td>
                 </tr>
                 </tfoot>
@@ -69,7 +76,7 @@ export default function RepLog (props) {
     );
 }
 
-RepLog.propTypes = {
+RepLogs.propTypes = {
     highlightedRowId: PropTypes.any,
     onRowClick: PropTypes.func.isRequired,
     withHeart: PropTypes.bool.isRequired,
