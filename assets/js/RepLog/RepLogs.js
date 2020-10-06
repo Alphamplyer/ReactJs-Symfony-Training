@@ -14,17 +14,27 @@ const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => to
 export default function RepLogs (props) {
     const {
         withHeart,
+        numberOfHearts,
         highlightedRowId,
         repLogs,
         onRowClick,
-        onAddRepLog
+        onAddRepLog,
+        onHeartChange
     } = props;
 
-    let heart = withHeart ? <span>❤</span> : '';
+    let heart = withHeart ? <span>{ '❤'.repeat(numberOfHearts) }</span> : '';
 
     return (
         <div className="col-md-7">
             <h2>Lift History! { heart }</h2>
+
+            <input
+                type="number"
+                value={ numberOfHearts }
+                onChange={ (e) => {
+                    onHeartChange(+e.target.value)
+                }}
+            />
 
             <table className="table table-striped">
                 <thead>
@@ -63,10 +73,13 @@ export default function RepLogs (props) {
 }
 
 RepLogs.propTypes = {
-    highlightedRowId: PropTypes.any,
     withHeart: PropTypes.bool.isRequired,
+    numberOfHearts: PropTypes.number.isRequired,
+
+    highlightedRowId: PropTypes.any,
     repLogs: PropTypes.array.isRequired,
 
     onRowClick: PropTypes.func.isRequired,
-    onAddRepLog: PropTypes.func.isRequired
+    onAddRepLog: PropTypes.func.isRequired,
+    onHeartChange: PropTypes.func.isRequired
 }
