@@ -22,5 +22,7 @@
     "watch": "encore dev --watch",
     "build": "encore production"
   },
-  "dependencies": {}
+  "dependencies": {
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
+  }
 }

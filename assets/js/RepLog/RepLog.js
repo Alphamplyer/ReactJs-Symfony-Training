@@ -4,7 +4,7 @@ import RepLogApp from "./RepLogApp";
 import PropTypes from "prop-types";
 
 export default function RepLog (props) {
-    const { withHeart, highlightedRowId, onRowClick } = props;
+    const { withHeart, highlightedRowId, onRowClick, repLogs } = props;
 
     let heart = withHeart ? <span>❤</span> : '';
 
@@ -24,6 +24,7 @@ export default function RepLog (props) {
                 <RepLogList
                     highlightedRowId={ highlightedRowId }
                     onRowClick={ onRowClick }
+                    repLogs={ repLogs }
                 />
                 <tfoot>
                 <tr>
@@ -72,4 +73,5 @@ RepLog.propTypes = {
     highlightedRowId: PropTypes.any,
     onRowClick: PropTypes.func.isRequired,
     withHeart: PropTypes.bool.isRequired,
+    repLogs: PropTypes.array.isRequired
 }
