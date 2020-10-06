@@ -29,11 +29,14 @@ export default function RepLogList (props) {
 
     return (
         <tbody>
-        { repLogs.map(({id, itemLabel, reps, totalWeightLifted}) => (
+        { repLogs.map(({id, itemLabel, reps, totalWeightLifted, isDeleting}) => (
             <tr
                 key={ id }
                 className={highlightedRowId === id ? 'info' : ''}
                 onClick={ () => onRowClick(id) }
+                style={{
+                    opacity: isDeleting ? .3 : 1
+                }}
             >
                 <td>{ itemLabel }</td>
                 <td>{ reps }</td>
