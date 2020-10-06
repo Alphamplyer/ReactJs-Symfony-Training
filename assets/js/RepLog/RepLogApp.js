@@ -9,7 +9,7 @@ export default class RepLogApp extends Component {
 
         this.state = {
             highlightedRowId: null,
-            repLogs : [
+            repLogs: [
                 { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
                 { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
                 { id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
@@ -23,17 +23,18 @@ export default class RepLogApp extends Component {
         this.setState( { highlightedRowId: repLogId })
     }
 
+    handleNewItemSubmit(itemName, reps) {
+        // TODO handle new data
+        console.log('WIP');
+        console.log(itemName, reps);
+    }
+
     render() {
         return <RepLogs
             {...this.props}
             {...this.state}
             onRowClick={ this.handleRowClick }
+            onNewItemSubmit={ this.handleNewItemSubmit }
         />
     }
-}
-
-RepLogApp.propTypes = {
-    highlightedRowId: PropTypes.any,
-    withHeart: PropTypes.bool,
-    repLogs: PropTypes.array.isRequired
 }
