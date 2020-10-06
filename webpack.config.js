@@ -33,12 +33,10 @@ Encore
     .enableReactPreset()
     .configureBabel((babelConfig) => {
         if (Encore.isProduction()) {
-            babelConfig.env = {
-                "production": {
-                    "plugins": ["transform-react-remove-prop-types"]
-                }
-            }
+            babelConfig.plugins.push('transform-react-remove-prop-types');
         }
+
+        babelConfig.plugins.push('transform-object-rest-spread');
     })
 ;
 
