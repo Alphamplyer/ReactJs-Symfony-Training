@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import RepLog from "./RepLog";
+import PropTypes from 'prop-types';
 
 export default class RepLogApp extends Component {
 
@@ -27,4 +28,9 @@ export default class RepLogApp extends Component {
             onRowClick={ this.handleRowClick }
         />
     }
+}
+
+RepLogApp.propTypes = {
+    highlightedRowId: PropTypes.any,
+    withHeart: PropTypes.bool,
 }
