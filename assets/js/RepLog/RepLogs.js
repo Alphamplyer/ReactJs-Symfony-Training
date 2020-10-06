@@ -18,7 +18,9 @@ export default function RepLogs (props) {
         numberOfHearts,
         highlightedRowId,
         repLogs,
+        successMessage,
         isLoaded,
+        isSavingNewRepLog,
         onRowClick,
         onAddRepLog,
         onHeartChange,
@@ -39,6 +41,12 @@ export default function RepLogs (props) {
                 }}
             />
 
+            { successMessage && (
+                <div className="alert alert-success text-center">
+                    { successMessage }
+                </div>
+            ) }
+
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -54,6 +62,7 @@ export default function RepLogs (props) {
                     repLogs={ repLogs }
                     isLoaded={ isLoaded }
                     onDeleteRepLog={ onDeleteRepLog }
+                    isSavingNewRepLog={ isSavingNewRepLog }
                 />
                 <tfoot>
                 <tr>
@@ -83,7 +92,11 @@ RepLogs.propTypes = {
 
     highlightedRowId: PropTypes.any,
     repLogs: PropTypes.array.isRequired,
+
+    successMessage: PropTypes.string.isRequired,
+
     isLoaded: PropTypes.bool.isRequired,
+    isSavingNewRepLog: PropTypes.bool.isRequired,
 
     onRowClick: PropTypes.func.isRequired,
     onAddRepLog: PropTypes.func.isRequired,
