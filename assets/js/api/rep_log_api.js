@@ -4,8 +4,10 @@
  * @returns {Promise<Response>}
  */
 export function getRepLogs() {
-    return fetch('/reps')
-        .then(response => {
-           return response.json();
-        });
+    return fetch('/reps', {
+        credentials: 'same-origin'
+    })
+    .then(response => {
+       return response.json().then((data) => data.items);
+    });
 }
