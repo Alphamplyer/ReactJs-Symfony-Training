@@ -28,18 +28,18 @@ export default function RepLogList (props) {
 
     return (
         <tbody>
-        { repLogs.map((repLog) => (
+        { repLogs.map(({id, itemLabel, reps, totalWeightLifted}) => (
             <tr
-                key={ repLog.id }
-                className={highlightedRowId === repLog.id ? 'info' : ''}
-                onClick={ () => onRowClick(repLog.id) }
+                key={ id }
+                className={highlightedRowId === id ? 'info' : ''}
+                onClick={ () => onRowClick(id) }
             >
-                <td>{ repLog.itemLabel }</td>
-                <td>{ repLog.reps }</td>
-                <td>{ repLog.totalWeightLifted }</td>
+                <td>{ itemLabel }</td>
+                <td>{ reps }</td>
+                <td>{ totalWeightLifted }</td>
                 <td>
-                    <a href="#" onClick={ (event) => handleDeleteRepLog(event, repLog.id) }>
-                        <span className="fa fa-trash"></span>
+                    <a href="#" onClick={ (event) => handleDeleteRepLog(event, id) }>
+                        <span className="fa fa-trash"/>
                     </a>
                 </td>
             </tr>
