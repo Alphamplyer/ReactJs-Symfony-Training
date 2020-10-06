@@ -2,12 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function RepLogList (props) {
-    const { highlightedRowId, repLogs, onRowClick, onDeleteRepLog } = props;
+    const {
+        highlightedRowId,
+        repLogs,
+        isLoaded,
+        onRowClick,
+        onDeleteRepLog,
+    } = props;
 
     const handleDeleteRepLog = function (event, repLogId) {
         event.preventDefault();
 
         onDeleteRepLog(repLogId);
+    }
+
+    if (!isLoaded) {
+        return (
+            <tbody>
+                <tr>
+                    <td colSpan="4" className="text-center">Loading...</td>
+                </tr>
+            </tbody>
+        );
     }
 
     return (
@@ -35,6 +51,7 @@ export default function RepLogList (props) {
 RepLogList.propTypes = {
     highlightedRowId: PropTypes.any,
     repLogs: PropTypes.array.isRequired,
+    isLoaded: PropTypes.bool.isRequired,
 
     onRowClick: PropTypes.func.isRequired,
     onDeleteRepLog: PropTypes.func.isRequired
