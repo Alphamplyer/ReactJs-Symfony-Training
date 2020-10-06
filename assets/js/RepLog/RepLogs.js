@@ -3,6 +3,7 @@ import RepLogList from "./RepLogList";
 import RepLogApp from "./RepLogApp";
 import PropTypes from "prop-types";
 import RepLogCreator from "./RepLogCreator";
+// import RepLogCreator from "./RepLogCreatorControlledComponents";
 
 /**
  * Calculate the total of amount contain in totalWeightLifted properties of logs
