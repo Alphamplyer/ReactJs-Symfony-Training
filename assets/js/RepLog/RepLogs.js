@@ -16,11 +16,16 @@ export default function RepLogs (props) {
     const {
         withHeart,
         numberOfHearts,
+
         highlightedRowId,
         repLogs,
+
         successMessage,
+        newRepLogValidationErrorMessage,
+
         isLoaded,
         isSavingNewRepLog,
+
         onRowClick,
         onAddRepLog,
         onHeartChange,
@@ -57,12 +62,12 @@ export default function RepLogs (props) {
                 </tr>
                 </thead>
                 <RepLogList
-                    highlightedRowId={ highlightedRowId }
-                    onRowClick={ onRowClick }
                     repLogs={ repLogs }
+                    highlightedRowId={ highlightedRowId }
                     isLoaded={ isLoaded }
-                    onDeleteRepLog={ onDeleteRepLog }
                     isSavingNewRepLog={ isSavingNewRepLog }
+                    onRowClick={ onRowClick }
+                    onDeleteRepLog={ onDeleteRepLog }
                 />
                 <tfoot>
                 <tr>
@@ -78,6 +83,7 @@ export default function RepLogs (props) {
                 <div className="col-md-6">
                     <RepLogCreator
                         onAddRepLog={ onAddRepLog }
+                        validationErrorMessage={ newRepLogValidationErrorMessage }
                     />
                 </div>
             </div>
@@ -94,6 +100,7 @@ RepLogs.propTypes = {
     repLogs: PropTypes.array.isRequired,
 
     successMessage: PropTypes.string.isRequired,
+    newRepLogValidationErrorMessage: PropTypes.string.isRequired,
 
     isLoaded: PropTypes.bool.isRequired,
     isSavingNewRepLog: PropTypes.bool.isRequired,
