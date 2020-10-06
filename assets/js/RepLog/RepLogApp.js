@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import RepLogs from "./RepLogs";
 import uuid from 'uuid/dist/v4';
-import { getRepLogs, deleteRepLog } from "../api/rep_log_api";
+import { getRepLogs, deleteRepLog, createRepLog } from "../api/rep_log_api";
 import PropTypes from 'prop-types';
 
 export default class RepLogApp extends Component {
@@ -35,18 +35,19 @@ export default class RepLogApp extends Component {
         this.setState( { highlightedRowId: repLogId })
     }
 
-    handleAddRepLog (itemName, reps) {
+    handleAddRepLog (item, reps) {
         const newRep = {
-            id: uuid(),
             reps: reps,
-            itemLabel: itemName,
-            totalWeightLifted: Math.floor(Math.random() * 50)
+            item: item,
         }
 
-        this.setState(prevState => {
-            const newRepLogs = [...prevState.repLogs, newRep];
-            return {repLogs: newRepLogs}
-        });
+        createRepLog(newRep)
+            .then(repLog => {
+                this.setState(prevState => {
+                    const newRepLogs = [...prevState.repLogs, repLog];
+                    return { repLogs: newRepLogs };
+                });
+            });
     }
 
     handleHeartChange (heartCount) {
