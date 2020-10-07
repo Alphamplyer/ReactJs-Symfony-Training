@@ -20,6 +20,8 @@ export default function RepLogs (props) {
         highlightedRowId,
         repLogs,
 
+        itemOptions,
+
         successMessage,
         newRepLogValidationErrorMessage,
 
@@ -82,8 +84,9 @@ export default function RepLogs (props) {
             <div className="row">
                 <div className="col-md-6">
                     <RepLogCreator
-                        onAddRepLog={ onAddRepLog }
+                        itemOptions={ itemOptions }
                         validationErrorMessage={ newRepLogValidationErrorMessage }
+                        onAddRepLog={ onAddRepLog }
                     />
                 </div>
             </div>
@@ -98,6 +101,8 @@ RepLogs.propTypes = {
 
     highlightedRowId: PropTypes.any,
     repLogs: PropTypes.array.isRequired,
+
+    itemOptions: PropTypes.array.isRequired,
 
     successMessage: PropTypes.string.isRequired,
     newRepLogValidationErrorMessage: PropTypes.string.isRequired,
